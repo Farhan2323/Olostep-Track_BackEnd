@@ -61,6 +61,15 @@ def scraper():
     response = requests.get(url)
     content = response.text
     schema = load_json_schema('schema.json')
+    logger.info('schema before: ' + str(schema))
+    data_types = data['dataTypes']
+    logger.info('data types: ' + str(data_types))
+    for data_type in data_types:
+        schema['properties'][data_type] = {}
+        schema['properties'][data_type]['type'] = 'string'
+        schema['properties'][data_type]['description'] = data_type
+
+    logger.info('schema after: ' + str(schema))
     response = openAI_client.chat.completions.create(
     model='gpt-4o-mini',
     response_format={"type": "json_object"},

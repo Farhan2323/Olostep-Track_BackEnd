@@ -4,13 +4,6 @@
      "description": "A simple Web scraping schema",
      "type": "object",
      "properties": {
-        "title": {
-            "description": "The name of the webpage",
-            "type": "string"
-        },
-        "summary": {
-            "description": "A summary of the content on the webpage",
-            "type": "string"
-        }
+
      }
 }
